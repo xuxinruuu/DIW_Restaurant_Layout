@@ -1,0 +1,357 @@
+/* ==========================================================================
+   VARIABLES GLOBALS
+   ========================================================================== */
+:root {
+    --color-principal: #8B1A10;
+    --color-principal-fosc: #6a110c;
+    --color-fosc: rgb(45, 43, 43);
+    --color-clar: rgb(252, 238, 220);
+    --color-vora: #ccc;
+    --mida-font: 0.8rem;
+    --alcada-nav: 4rem;
+}
+
+
+/* ==========================================================================
+   RESET I BASE
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Gill Sans', Calibri, sans-serif;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+section {
+    padding: 2.5rem;
+    scroll-margin-top: var(--alcada-nav);
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+
+/* ==========================================================================
+   NAV - MENÚ (sempre visible a la part superior)
+   ========================================================================== */
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.8rem;
+    margin: 0;
+    padding: 1.2rem;
+    list-style: none;
+    background-color: var(--color-fosc);
+}
+
+.menu a {
+    padding-bottom: 2px;
+    color: white;
+    font-size: var(--mida-font);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.menu a:hover {
+    border-bottom-color: white;
+}
+
+
+/* ==========================================================================
+   HEADER - CAPÇALERA
+   ========================================================================== */
+#header {
+    position: relative;
+}
+
+#header img {
+    width: 100%;
+    opacity: 0.6;
+}
+
+.titol {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: white;
+}
+
+.titol h1 {
+    margin: 0;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+}
+
+.titol p {
+    margin: 0.3rem 0 0;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+
+/* ==========================================================================
+   SOBRE NOSALTRES
+   ========================================================================== */
+.nosaltres {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.nosaltres + .nosaltres {
+    margin-top: 2rem;
+}
+
+.nosaltres img {
+    width: 100%;
+    max-width: 20rem;
+    justify-self: center;
+    border-radius: 1rem;
+}
+
+
+/* ==========================================================================
+   CARTA
+   ========================================================================== */
+.carta_container {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    gap: 1.8rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+}
+
+.carta_titol {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.carta_menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.img_comida {
+    display: flex;
+    gap: 1rem;
+}
+
+.img_comida_item {
+    position: relative;
+    flex: 1;
+    margin: 0;
+    overflow: hidden;
+}
+
+.img_comida_item img {
+    width: 100%;
+}
+
+.img_overlay_text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0.3rem 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* ==========================================================================
+   GALERIA DE FOTOS
+   ========================================================================== */
+.galeria_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.galeria_item {
+    flex: 1 1 10rem;
+    max-width: 12rem;
+    overflow: hidden;
+    border: 3px solid var(--color-vora);
+    transition: border-color 0.2s ease;
+
+    /* Brillantor per defecte i en hover */
+    --brillo: 1;
+    --brillo-hover: 0.5;
+}
+
+/* Imatges 1, 4, 5 i 8 més fosques */
+.galeria_item:nth-child(1),
+.galeria_item:nth-child(4),
+.galeria_item:nth-child(5),
+.galeria_item:nth-child(8) {
+    --brillo: 0.6;
+    --brillo-hover: 0.4;
+}
+
+.galeria_item img {
+    width: 100%;
+    filter: brightness(var(--brillo));
+    transition: filter 0.2s ease;
+}
+
+.galeria_item:hover {
+    border-color: var(--color-principal);
+}
+
+.galeria_item:hover img {
+    filter: brightness(var(--brillo-hover));
+}
+
+
+/* ==========================================================================
+   FORMULARI
+   ========================================================================== */
+#formulari {
+    background-color: var(--color-clar);
+}
+
+.form_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 50rem;
+    margin-inline: auto;
+}
+
+.form_container label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.descripcio,
+.button {
+    grid-column: 1 / -1;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    font: inherit;
+    font-size: var(--mida-font);
+}
+
+.button {
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    font-size: var(--mida-font);
+    color: white;
+    background-color: var(--color-principal);
+}
+
+.button:hover,
+.reservar:hover {
+    background-color: var(--color-principal-fosc);
+}
+
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    font-size: var(--mida-font);
+    color: white;
+    background-color: var(--color-fosc);
+}
+
+.footer_item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer_item .material-icons {
+    font-size: 1.2rem;
+}
+
+.logo img {
+    width: 3rem;
+}
+
+
+/* ==========================================================================
+   BOTÓ RESERVAR (sempre visible a baix a la dreta)
+   ========================================================================== */
+.reservar {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 200;
+    padding: 1rem;
+    font-size: var(--mida-font);
+    color: white;
+    text-decoration: none;
+    background-color: var(--color-principal);
+}
+
+
+/* ==========================================================================
+   RESPONSIVE (mòbil)
+   ========================================================================== */
+@media (max-width: 48rem) {
+    section {
+        padding: 1.5rem;
+    }
+
+    .menu {
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .nosaltres,
+    .carta_container,
+    .form_container {
+        grid-template-columns: 1fr;
+    }
+
+    .nosaltres {
+        gap: 1.5rem;
+    }
+
+    .footer_container {
+        justify-content: center;
+    }
+}
